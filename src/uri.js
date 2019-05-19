@@ -1,0 +1,1 @@
+export const URI = (user) => `http://api.github.com/users/${user}`
