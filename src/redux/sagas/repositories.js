@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import { URI } from '../../uri';
 import { Types } from '../reducers/repositories'
 const getRepositoriesHandle = async (user) => {
   return axios.request({
     method: 'get',
-    url: `${URI(user)}/repos`,
+    url: `${URI.user(user)}/repos`,
   });
 }
 

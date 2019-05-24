@@ -4,16 +4,19 @@ import {
   VerticalTimelineElement
 } from "react-vertical-timeline-component"
 import "react-vertical-timeline-component/style.min.css"
-import { Button, SearchInput, Select } from "evergreen-ui"
+import { Button, Select } from "evergreen-ui"
 import { connect } from 'react-redux'
 import { searchRepos } from './redux/reducers/repositories'
+import Search from './Search'
+
 const HomeScreen = ({
   ...props
 }) => {
+  const { dispatch } = props;
 
   useEffect(() => {
-    props.dispatch(searchRepos('brognilucas'))
-  }, [])
+    dispatch(searchRepos('brognilucas'))
+  }, [dispatch])
 
   console.log(props)
   return (
@@ -23,13 +26,7 @@ const HomeScreen = ({
         <option value="JS">Linguagem: Javascript</option>
         <option value="HTML">Linguagem: HTML</option>
       </Select>
-      <SearchInput
-        placeholder="Digite o nome do usuário..."
-        marginTop={20}
-        height={40}
-        width={500}
-        autoFocus
-      />
+      <Search />
       <Button
         height={40}
         marginLeft={16}
