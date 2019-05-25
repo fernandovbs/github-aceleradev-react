@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { SearchInput, Pane, Table } from "evergreen-ui";
 import { connect } from "react-redux";
-import { searchUsers, setUser } from "./../../redux/reducers/users";
-import { searchRepos } from "./../../redux/reducers/repositories";
-const Search = props => {
+import { searchUsers, setUser } from "../../redux/reducers/users";
+import { searchRepos } from "../../redux/reducers/repositories";
+const SearchLanguage = props => {
   const [searchString, setSearchString] = useState("");
   const { dispatch } = props;
   useEffect(() => {
     dispatch(searchUsers(searchString));
   }, [searchString, dispatch]);
 
+  console.log('Language Search selected')
   const handleSelect = user => {
     setSearchString("");
     dispatch(setUser(user));
@@ -73,4 +74,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(Search);
+)(SearchLanguage);
