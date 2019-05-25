@@ -14,7 +14,7 @@ export function* getRepositories({ user }) {
     const { data } = yield call(getRepositoriesHandle, user)
     yield put(setRepositories(data))
   } catch (error) {
-    alert(error)
+    alert('User not found')
   }
 }
 

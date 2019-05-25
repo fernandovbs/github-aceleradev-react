@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SearchInput, Pane, Table } from "evergreen-ui";
 import { connect } from "react-redux";
 import { searchUsers, setUser } from "./../../redux/reducers/users";
-
+import { searchRepos } from "./../../redux/reducers/repositories";
 const Search = props => {
   const [searchString, setSearchString] = useState("");
   const { dispatch } = props;
@@ -12,16 +12,13 @@ const Search = props => {
 
   const handleSelect = user => {
     setSearchString("");
-    console.log(user);
     dispatch(setUser(user));
   };
 
   const handleKeyPress = e => {
     if (e.keyCode === 13) {
-      const user = props.users.suggestions.filter(user => {
-        return user.login === searchString
-      })
-      dispatch(setUser(user[0]));
+      dispatch(searchRepos(searchString));
+      setSearchString("");
     }
   };
 

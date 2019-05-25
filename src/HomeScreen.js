@@ -8,7 +8,7 @@ const HomeScreen = ({ ...props }) => {
   const { dispatch, user } = props
 
   useEffect(() => {
-    user.login && dispatch(searchRepos(user.login));
+    user && user.login && dispatch(searchRepos(user.login));
   }, [dispatch, user]);
   return (
     <div className="App">
