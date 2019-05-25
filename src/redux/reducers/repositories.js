@@ -4,12 +4,18 @@ export const Types = {
   RESET_REPOS: 'repos/RESET_REPOS'
 }
 
-export default function repositories(state = [], action) {
+const INITIAL_STATE = {
+  repositories: [],
+  loaded: false
+};
+
+export default function repositories(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.SET_REPOS:
       return {
         ...state,
-        ...action.repositories
+        repositories: action.repositories,
+        loaded: true
       }
     case Types.RESET_REPOS:
       return state

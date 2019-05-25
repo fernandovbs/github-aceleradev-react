@@ -8,7 +8,6 @@ const HomeScreen = ({ ...props }) => {
   useEffect(() => {
     props.dispatch(searchRepos("brognilucas"));
   }, []);
-  console.log(props);
   return (
     <div className="App">
       <NavBar />
@@ -19,6 +18,7 @@ const HomeScreen = ({ ...props }) => {
 const mapStateToProps = state => {
   return {
     ...state
+   
   };
 };
 
