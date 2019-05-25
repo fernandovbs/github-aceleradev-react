@@ -1,9 +1,9 @@
 import { Pane, SearchInput, Table } from "evergreen-ui"
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { searchRepos } from "./../../redux/reducers/repositories"
-import { searchUsers, setUser } from "./../../redux/reducers/users"
-const Search = props => {
+import { searchRepos } from "../../redux/reducers/repositories"
+import { searchUsers, setUser } from "../../redux/reducers/users"
+const SearchUser = props => {
   const [searchString, setSearchString] = useState("")
   const { dispatch } = props
   useEffect(() => {
@@ -63,4 +63,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(Search)
+)(SearchUser)
