@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { SearchInput, Pane, Table } from "evergreen-ui";
-import { connect } from "react-redux";
-import { searchUsers, setUser } from "./../../redux/reducers/users";
-import { searchRepos } from "./../../redux/reducers/repositories";
+import { Pane, SearchInput, Table } from "evergreen-ui"
+import React, { useEffect, useState } from "react"
+import { connect } from "react-redux"
+import { searchRepos } from "./../../redux/reducers/repositories"
+import { searchUsers, setUser } from "./../../redux/reducers/users"
 const Search = props => {
-  const [searchString, setSearchString] = useState("");
-  const { dispatch } = props;
+  const [searchString, setSearchString] = useState("")
+  const { dispatch } = props
   useEffect(() => {
-    dispatch(searchUsers(searchString));
-  }, [searchString, dispatch]);
+    dispatch(searchUsers(searchString))
+  }, [searchString, dispatch])
 
   const handleSelect = user => {
-    setSearchString("");
-    dispatch(setUser(user));
-  };
+    setSearchString("")
+    dispatch(setUser(user))
+  }
 
   const handleKeyPress = e => {
     if (e.keyCode === 13) {
-      dispatch(searchRepos(searchString));
-      setSearchString("");
+      dispatch(searchRepos(searchString))
+      setSearchString("")
     }
-  };
+  }
 
   return (
-    <div style={{ display: "inline-block", position: "relative" }}>
+    <div>
       <SearchInput
         onChange={e => {
-          setSearchString(e.target.value);
+          setSearchString(e.target.value)
         }}
         onKeyDown={handleKeyPress}
         placeholder="Digite o nome do usuário..."
@@ -36,17 +36,7 @@ const Search = props => {
         autoFocus
         value={searchString}
       />
-      <Pane
-        width={500}
-        style={{
-          display: "inline-block",
-          position: "absolute",
-          top: "65px",
-          marginLeft: "50%",
-          left: "-250px",
-          zIndex: "200"
-        }}
-      >
+      <Pane width={500}>
         {props.users.suggestions.map(user => {
           return (
             <Table.Row
@@ -57,20 +47,20 @@ const Search = props => {
             >
               <Table.TextCell>{user.login}</Table.TextCell>
             </Table.Row>
-          );
+          )
         })}
       </Pane>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     ...state
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
   null
-)(Search);
+)(Search)

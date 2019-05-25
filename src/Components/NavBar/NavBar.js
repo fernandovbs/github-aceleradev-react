@@ -1,10 +1,15 @@
-import React from "react";
-import { Button, Select } from "evergreen-ui";
-import Search from "./Search";
+import { Button, Select } from "evergreen-ui"
+import React from "react"
+import Search from "./Search"
 
 const Nav = () => (
-  <div>
-    <Select height={40} marginRight={16}>
+  <div style={{ display: "flex", justifyContent: "center" }}>
+    <Select
+      height={40}
+      marginRight={16}
+      marginTop={20}
+      style={{ flex: "none" }}
+    >
       <option value="All">Linguagem: Todas</option>
       <option value="JS">Linguagem: Javascript</option>
       <option value="HTML">Linguagem: HTML</option>
@@ -12,6 +17,7 @@ const Nav = () => (
     <Search />
     <Button
       height={40}
+      marginTop={20}
       marginLeft={16}
       appearance="primary"
       intent="success"
@@ -20,6 +26,6 @@ const Nav = () => (
       Novo repositório
     </Button>
   </div>
-);
+)
 
-export default Nav;
+export default Nav
