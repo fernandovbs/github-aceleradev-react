@@ -21,11 +21,10 @@ const TimeLineList = ({ repositories, ...props }) => {
   } else return <h1>Search a user first</h1>;
 };
 
-function mapStateToProps(state) {
+function mapStateToProps({repositories}) {
 
   return {
-    ...state,
-    repositories: state && state.repositories,
+    repositories,
   };
 }
 
