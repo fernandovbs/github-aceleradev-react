@@ -4,18 +4,23 @@ import { connect } from "react-redux";
 import { Spinner, Heading } from 'evergreen-ui'
 import { VerticalTimeline } from "react-vertical-timeline-component";
 import { acumulateByYear } from '../../Helpers/acumulator'
-const TimeLineList = ({ repositories , repositoriesByYear , ...props }) => {
+const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
   if (repositories.loading) {
     return <Spinner margin='auto' marginTop={10} />
   }
-
   if (repositories.loaded) {
     return (
       <VerticalTimeline>
-        {repositories.repositories.map(repo => {
-          console.log(repo.git_commits_url)
-          return <TimeLineListItem description={repo.description} language={repo.language} repoName={repo.name} key={repo.id} date={repo.created_at} />;
-        })}
+
+        {Object.keys(repositoriesByYear).map((year) => (
+          <React.Fragment>
+
+            <TimeLineListItem
+              year={year} repositories={repositoriesByYear[year]}
+            />
+          </React.Fragment>
+        ))}
+
       </VerticalTimeline>
     );
   }
@@ -24,8 +29,11 @@ const TimeLineList = ({ repositories , repositoriesByYear , ...props }) => {
 };
 
 function mapStateToProps({ repositories }) {
+  let repos = repositories.repositories.filter((repo) => !repo.private && !repo.archived && !repo.forked)
   return {
-    repositoriesByYear: acumulateByYear(repositories.repositories, 'created_at'),
+    repositoriesByYear: acumulateByYear(repos, 'created_at')
+    
+    ,
     repositories: {
       ...repositories,
       repositories: repositories.repositories.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)).filter((repo) => !repo.private && !repo.archived && !repo.forked)
