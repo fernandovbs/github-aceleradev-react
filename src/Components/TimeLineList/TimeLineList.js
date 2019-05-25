@@ -1,7 +1,7 @@
 import React from "react";
 import TimeLineListItem from "../TimeLineListItem/TimeLineListItem";
 import { connect } from "react-redux";
-import { Spinner } from 'evergreen-ui'
+import { Spinner, Heading } from 'evergreen-ui'
 
 const TimeLineList = ({ repositories, ...props }) => {
   
@@ -18,7 +18,9 @@ const TimeLineList = ({ repositories, ...props }) => {
         })}
       </div>
     );
-  } else return <h1>Search a user first</h1>;
+  }
+  
+  return <Heading  size={900} marginTop="default">GitHub Timeline</Heading>;
 };
 
 function mapStateToProps({repositories}) {
