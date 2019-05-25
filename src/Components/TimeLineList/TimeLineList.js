@@ -3,16 +3,16 @@ import TimeLineListItem from "../TimeLineListItem/TimeLineListItem";
 import { connect } from "react-redux";
 import { Spinner } from 'evergreen-ui'
 
-const TimeLineList = ({ repositories, loaded, loading, ...props }) => {
+const TimeLineList = ({ repositories, ...props }) => {
   
-  if (loading) {
+  if (repositories.loading) {
     return <Spinner margin='auto' marginTop={10}/>
   }
 
-  if (loaded) {
+  if (repositories.loaded) {
     return (
       <div>
-        {repositories.map(repo => {
+        {repositories.repositories.map(repo => {
             console.log(repo.git_commits_url)
           return <TimeLineListItem description={repo.description} repoName={repo.name} key={repo.id} date={repo.created_at} />;
         })}
@@ -25,9 +25,7 @@ function mapStateToProps(state) {
 
   return {
     ...state,
-    repositories: state && state.repositories.repositories,
-    loaded: state.repositories.loaded,
-    loading: state.repositories.loading    
+    repositories: state && state.repositories,
   };
 }
 
