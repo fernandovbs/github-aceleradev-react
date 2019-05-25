@@ -4,18 +4,21 @@ export const Types = {
   RESET_REPOS: 'repos/RESET_REPOS'
 }
 
-const INITIAL_STATE = {
-  repositories: [],
-  loaded: false
-};
-
-export default function repositories(state = INITIAL_STATE, action) {
+export default function repositories(state = [], action) {
   switch (action.type) {
+    case Types.GET_REPOS:
+      return {
+        ...state,
+        repositories: [],
+        loaded: false,
+        loading: true,
+      }
     case Types.SET_REPOS:
       return {
         ...state,
         repositories: action.repositories,
-        loaded: true
+        loaded: true,
+        loading: false,
       }
     case Types.RESET_REPOS:
       return state
@@ -25,7 +28,6 @@ export default function repositories(state = INITIAL_STATE, action) {
 }
 
 export const searchRepos = (user) => {
-  console.log(user)
   return { 
     type: Types.GET_REPOS,
     user

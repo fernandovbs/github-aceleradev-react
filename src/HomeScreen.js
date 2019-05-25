@@ -5,9 +5,11 @@ import { searchRepos } from "./redux/reducers/repositories";
 import NavBar from "./Components/NavBar/NavBar";
 import TimeLineList from "./Components/TimeLineList/TimeLineList";
 const HomeScreen = ({ ...props }) => {
+  const { dispatch, user } = props
+
   useEffect(() => {
-    props.dispatch(searchRepos("brognilucas"));
-  }, []);
+    user.login && dispatch(searchRepos(user.login));
+  }, [dispatch, user]);
   return (
     <div className="App">
       <NavBar />
@@ -17,8 +19,8 @@ const HomeScreen = ({ ...props }) => {
 };
 const mapStateToProps = state => {
   return {
-    ...state
-   
+    ...state,
+   user: state.users.user
   };
 };
 

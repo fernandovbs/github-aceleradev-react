@@ -1,10 +1,15 @@
 import React from "react";
 import TimeLineListItem from "../TimeLineListItem/TimeLineListItem";
 import { connect } from "react-redux";
+import { Spinner } from 'evergreen-ui'
 
-const TimeLineList = ({ repositories, Loaded, ...props }) => {
-    
-  if (Loaded) {
+const TimeLineList = ({ repositories, loaded, loading, ...props }) => {
+  
+  if (loading) {
+    return <Spinner margin='auto' marginTop={10}/>
+  }
+
+  if (loaded) {
     return (
       <div>
         {repositories.map(repo => {
@@ -13,14 +18,16 @@ const TimeLineList = ({ repositories, Loaded, ...props }) => {
         })}
       </div>
     );
-  } else return null;
+  } else return <h1>Search a user first</h1>;
 };
 
 function mapStateToProps(state) {
+
   return {
     ...state,
     repositories: state && state.repositories.repositories,
-    Loaded: state.repositories.loaded
+    loaded: state.repositories.loaded,
+    loading: state.repositories.loading    
   };
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, SearchInput, Select } from "evergreen-ui";
+import { Button, Select } from "evergreen-ui";
+import Search from "./Search";
 
 const Nav = () => (
   <div>
@@ -8,13 +9,7 @@ const Nav = () => (
       <option value="JS">Linguagem: Javascript</option>
       <option value="HTML">Linguagem: HTML</option>
     </Select>
-    <SearchInput
-      placeholder="Digite o nome do usuário..."
-      marginTop={20}
-      height={40}
-      width={500}
-      autoFocus
-    />
+    <Search />
     <Button
       height={40}
       marginLeft={16}
