@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement
-} from "react-vertical-timeline-component";
+import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
 const TimeLineListItem = props  => {
   return (
-    <VerticalTimeline>
       <VerticalTimelineElement
         className="vertical-timeline-element--education"
         date={props.date}
@@ -20,7 +16,6 @@ const TimeLineListItem = props  => {
           Management, Team Leading
         </p>
       </VerticalTimelineElement>
-    </VerticalTimeline>
   );
 };
 

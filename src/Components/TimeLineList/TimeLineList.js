@@ -2,6 +2,7 @@ import React from "react";
 import TimeLineListItem from "../TimeLineListItem/TimeLineListItem";
 import { connect } from "react-redux";
 import { Spinner, Heading } from 'evergreen-ui'
+import { VerticalTimeline } from "react-vertical-timeline-component";
 
 const TimeLineList = ({ repositories, ...props }) => {
   
@@ -11,12 +12,12 @@ const TimeLineList = ({ repositories, ...props }) => {
 
   if (repositories.loaded) {
     return (
-      <div>
+      <VerticalTimeline>
         {repositories.repositories.map(repo => {
             console.log(repo.git_commits_url)
           return <TimeLineListItem description={repo.description} language={repo.language} repoName={repo.name} key={repo.id} date={repo.created_at} />;
         })}
-      </div>
+      </VerticalTimeline>
     );
   }
 
