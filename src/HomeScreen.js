@@ -5,7 +5,7 @@ import { searchRepos } from "./redux/reducers/repositories";
 import NavBar from "./Components/NavBar/NavBar";
 import TimeLineList from "./Components/TimeLineList/TimeLineList";
 const HomeScreen = ({ ...props }) => {
-  const { dispatch, user } = props
+  const { dispatch, user, repositories } = props
 
   useEffect(() => {
     user && user.login && dispatch(searchRepos(user.login));
@@ -13,14 +13,19 @@ const HomeScreen = ({ ...props }) => {
   return (
     <div className="App">
       <NavBar />
-      <TimeLineList />
+      {repositories.loaded && (
+        <TimeLineList />
+      )}
+
     </div>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = ({
+  users, repositories
+}) => {
   return {
-    ...state,
-   user: state.users.user
+    repositories,
+    user: users.user
   };
 };
 
