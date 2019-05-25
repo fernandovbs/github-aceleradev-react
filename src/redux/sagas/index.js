@@ -8,6 +8,6 @@ export default function* root(dispatch) {
 
   yield all([
     takeLatest(RepoReducersTypes.GET_REPOS, getRepositories),
-    throttle(2000, RepoUsersTypes.GET_USERS, getUsers),
+    throttle(700, RepoUsersTypes.GET_USERS, getUsers),
   ])
 }

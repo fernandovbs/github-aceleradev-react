@@ -12,11 +12,12 @@ export const Types = {
 
   export default function repositories(state = defaultState, action) {
     switch (action.type) {
-/*      case Types.GET_USERS:
+      case Types.SET_USER:
         return {
           ...state,
-          ...action.users
-        }*/
+          suggestions: [],
+          user: action.user
+        }
       case Types.SET_USERS:
         return {
           ...state,
@@ -36,4 +37,11 @@ export const Types = {
       type: Types.GET_USERS,
       searchString
     }
+  }
+
+  export const setUser = (user) => {
+    return { 
+      type: Types.SET_USER,
+      user
+    }    
   }

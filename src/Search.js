@@ -1,7 +1,7 @@
-import React, { useEffect, useState, Fragment } from 'react'
-import { SearchInput, Autocomplete } from "evergreen-ui"
+import React, { useEffect, useState } from 'react'
+import { SearchInput, Pane, Table } from "evergreen-ui"
 import { connect } from 'react-redux'
-import { searchUsers } from './redux/reducers/users';
+import { searchUsers, setUser } from './redux/reducers/users';
  
 const Search = (props) => {
     const [searchString, setSearchString] =  useState('');
@@ -11,7 +11,12 @@ const Search = (props) => {
         dispatch(searchUsers(searchString))  
     }, [searchString, dispatch])
 
-return (<Fragment>
+    const handleSelect = (user) => {
+        setSearchString('')
+        dispatch(setUser(user))
+    }
+
+return (<div style={{display: 'inline-block', position: 'relative'}}>
         <SearchInput
             onChange={(e) => {setSearchString(e.target.value)}}
             placeholder="Digite o nome do usuário..."
@@ -19,20 +24,33 @@ return (<Fragment>
             height={40}
             width={500}
             autoFocus
+            value={searchString}
         />
-        <ul style={{
+        <Pane 
+        width={500} 
+        style={{
             display: 'inline-block', 
             position:'absolute', 
-            top:'50px', 
-            listStyle: 'none',
-            left: '50%',
-            marginRight: '-200px',
-            width: '400px', 
-            zIndex:'100'
-        }}>
-            {props.users.suggestions.map(user => <li key={user.id}>{user.login}</li>)}
-        </ul>
-    </Fragment>
+            top:'65px',
+            marginLeft: '50%',
+            left: '-250px', 
+            zIndex: '200'
+        }}        
+        >
+        {props.users.suggestions.map((user, key) => {
+          return (
+            <Table.Row
+              key={user.id}
+              isSelectable
+              onSelect={() => handleSelect(user)}
+              intent='success'
+            >
+              <Table.TextCell>{user.login}</Table.TextCell>
+            </Table.Row>
+          )
+        })}
+      </Pane>        
+    </div>
     )
 
 }
