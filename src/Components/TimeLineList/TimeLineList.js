@@ -1,26 +1,31 @@
 import React from "react";
 import TimeLineListItem from "../TimeLineListItem/TimeLineListItem";
 import { connect } from "react-redux";
+import { Spinner, Heading } from 'evergreen-ui'
 
-const TimeLineList = ({ repositories, Loaded, ...props }) => {
-    
-  if (Loaded) {
+const TimeLineList = ({ repositories, ...props }) => {
+  
+  if (repositories.loading) {
+    return <Spinner margin='auto' marginTop={10}/>
+  }
+
+  if (repositories.loaded) {
     return (
       <div>
-        {repositories.map(repo => {
+        {repositories.repositories.map(repo => {
             console.log(repo.git_commits_url)
           return <TimeLineListItem description={repo.description} language={repo.language} repoName={repo.name} key={repo.id} date={repo.created_at} />;
         })}
       </div>
     );
-  } else return null;
+  }
+
+  return <Heading  size={900} marginTop="default">GitHub Timeline</Heading>;
 };
 
-function mapStateToProps(state) {
+function mapStateToProps({repositories}) {
   return {
-    ...state,
-    repositories: state && state.repositories.repositories,
-    Loaded: state.repositories.loaded
+    repositories,
   };
 }
 
