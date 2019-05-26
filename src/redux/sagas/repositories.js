@@ -17,16 +17,16 @@ const getLanguageRepositoriesHandle = async user => {
 
 export function* getRepositories({ user, pesquisa }) {
   try {
-    if (pesquisa === "user") {
-      const { data } = yield call(getUserRepositoriesHandle, user);
-      yield put(setRepositories(data));
-    } else if (pesquisa === "language") {
+    if (pesquisa === "language") {
       const { data } = yield call(getLanguageRepositoriesHandle, user);
       yield put(setRepositories(data.items));
+    } else {
+      const { data } = yield call(getUserRepositoriesHandle, user);
+      yield put(setRepositories(data));
     }
   } catch (error) {
-    if (pesquisa === "user") alert("User not found");
-    else if (pesquisa === "language") alert("Language not found");
+    if (pesquisa === "language") alert("Language not found");
+    else alert("User not found");
   }
 }
 
