@@ -7,13 +7,11 @@ import TimeLineListItem from "../TimeLineListItem/TimeLineListItem"
 const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
   if (repositories.loading) {
     return <Spinner margin="auto" marginTop={10} />
-  }
-
-  if (repositories.loaded) {
+  } else if (repositories.loaded) {
     return (
       <VerticalTimeline>
         {repositories.repositories.map(repo => {
-          console.log(repo.git_commits_url)
+          //console.log(repo.git_commits_url)
           return (
             <TimeLineListItem
               description={repo.description}
@@ -36,6 +34,7 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
 }
 
 function mapStateToProps({ repositories }) {
+  console.log(acumulateByYear(repositories.repositories, "created_at"))
   return {
     repositoriesByYear: acumulateByYear(
       repositories.repositories,
