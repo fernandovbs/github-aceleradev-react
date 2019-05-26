@@ -14,12 +14,12 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
           .slice(0)
           .reverse()
           .map((year, index) => (
-            <React.Fragment key={index}>
+            <div key={index}>
               <TimeLineListItem
                 year={`Repositórios criados em: ${year}`}
                 repositories={repositoriesByYear[year]}
               />
-            </React.Fragment>
+            </div>
           ))}
       </VerticalTimeline>
     )

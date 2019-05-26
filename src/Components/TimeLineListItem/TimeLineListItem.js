@@ -16,13 +16,13 @@ const TimeLineListItem = ({ year, repositories, ...props }) => {
       }}
     >
       {repositories.map((repo, index) => (
-        <React.Fragment key={index}>
+        <div key={index}>
           <h2 className="vertical-timeline-element-title">{repo.name}</h2>
           <h3 className="vertical-timeline-element-subtitle">
             {repo.description}
           </h3>
           <hr />
-        </React.Fragment>
+        </div>
       ))}
     </VerticalTimelineElement>
   )
