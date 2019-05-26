@@ -19,6 +19,7 @@ export function* getRepositories({ user, pesquisa }) {
   try {
     if (pesquisa === "language") {
       const { data } = yield call(getLanguageRepositoriesHandle, user);
+      console.log(data)
       yield put(setRepositories(data.items));
     } else {
       const { data } = yield call(getUserRepositoriesHandle, user);

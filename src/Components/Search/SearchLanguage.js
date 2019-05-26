@@ -1,43 +1,69 @@
-import { SearchInput} from "evergreen-ui"
-import React, { useState } from "react"
-import { connect } from "react-redux"
-import { searchRepos } from "../../redux/reducers/repositories"
+import { SearchInput } from "evergreen-ui";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { searchRepos } from "../../redux/reducers/repositories";
 const SearchUser = props => {
-  const [searchString, setSearchString] = useState("")
-  const { dispatch } = props
+  const [repoString, setRepoString] = useState("");
+  const [languageString, setLanguageString] = useState("");
+  const { dispatch } = props;
 
-  const handleKeyPress = e => {
+  const handleKeyPressRepo = e => {
     if (e.keyCode === 13) {
-      dispatch(searchRepos(searchString, 'language'))
-      setSearchString("")
+      dispatch(searchRepos({ repoString, languageString }, "language"));
+      setRepoString("");
+      setLanguageString("");
     }
-  }
+  };
+  const handleKeyPressLanguage = e => {
+    if (e.keyCode === 13) {
+      if (repoString === "") {
+        alert("Must fill repositorie name");
+      } else {
+        dispatch(searchRepos({ repoString, languageString }, "language"));
+        setLanguageString("");
+        setRepoString("");
+      }
+    }
+  };
 
   return (
     <div>
       <SearchInput
         onChange={e => {
-          setSearchString(e.target.value)
+          setRepoString(e.target.value);
         }}
-        onKeyDown={handleKeyPress}
-        placeholder="Digite o nome do usuário..."
+        onKeyDown={handleKeyPressRepo}
+        placeholder="Digite o nome do repositório..."
         marginTop={20}
         height={40}
         width={500}
         autoFocus
-        value={searchString}
+        value={repoString}
+      />
+      <SearchInput
+        onChange={e => {
+          setLanguageString(e.target.value);
+        }}
+        onKeyDown={handleKeyPressLanguage}
+        placeholder="Linguagem"
+        marginTop={20}
+        marginLeft={5}
+        height={40}
+        width={150}
+        autoFocus
+        value={languageString}
       />
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
   return {
     ...state
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   null
-)(SearchUser)
+)(SearchUser);
