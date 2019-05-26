@@ -36,14 +36,20 @@ const SearchUser = props => {
         autoFocus
         value={searchString}
       />
-      <Pane width={500}>
+      <Pane
+        width={500}
+        style={{
+          position: "absolute",
+          zIndex: 999
+        }}
+      >
         {props.users.suggestions.map(user => {
           return (
             <Table.Row
               key={user.id}
               isSelectable
               onSelect={() => handleSelect(user)}
-              intent="success"
+              intent="none"
             >
               <Table.TextCell>{user.login}</Table.TextCell>
             </Table.Row>
