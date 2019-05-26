@@ -1,13 +1,12 @@
-import { all, takeLatest, throttle } from 'redux-saga/effects';
-import { Types as RepoReducersTypes } from '../reducers/repositories';
-import { Types as RepoUsersTypes } from '../reducers/users';
-import { getRepositories } from '../sagas/repositories'
-import { getUsers } from '../sagas/users'
+import { all, takeLatest, throttle } from "redux-saga/effects";
+import { Types as RepoReducersTypes } from "../reducers/repositories";
+import { Types as RepoUsersTypes } from "../reducers/users";
+import { getRepositories } from "../sagas/repositories";
+import { getUsers } from "../sagas/users";
 
-export default function* root(dispatch) {
-
+export default function* root() {
   yield all([
     takeLatest(RepoReducersTypes.GET_REPOS, getRepositories),
-    throttle(700, RepoUsersTypes.GET_USERS, getUsers),
-  ])
+    throttle(700, RepoUsersTypes.GET_USERS, getUsers)
+  ]);
 }
