@@ -8,6 +8,7 @@ const initialState = {
   repositories: [],
   loaded: false,
   loading: false,
+  pesquisa: 'user'
 }
 
 export default function repositories(state = initialState, action) {
@@ -33,9 +34,10 @@ export default function repositories(state = initialState, action) {
   }
 }
 
-export const searchRepos = (user) => {
+export const searchRepos = (user, pesquisa) => {
   return {
     type: Types.GET_REPOS,
-    user
+    user,
+    pesquisa
   }
 }

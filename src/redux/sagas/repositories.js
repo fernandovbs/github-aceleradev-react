@@ -1,24 +1,36 @@
-import axios from 'axios'
-import { call, put } from 'redux-saga/effects';
-import { URI } from '../../uri';
-import { Types } from '../reducers/repositories'
-const getRepositoriesHandle = async (user) => {
+import axios from "axios";
+import { call, put } from "redux-saga/effects";
+import { URI } from "../../uri";
+import { Types } from "../reducers/repositories";
+const getUserRepositoriesHandle = async user => {
   return axios.request({
-    method: 'get',
-    url: `${URI.user(user)}/repos`,
+    method: "get",
+    url: `${URI.user(user)}/repos`
   });
-}
+};
+const getLanguageRepositoriesHandle = async user => {
+  return axios.request({
+    method: "get",
+    url: `${URI.language(user)}`
+  });
+};
 
-export function* getRepositories({ user }) {
+export function* getRepositories({ user, pesquisa }) {
   try {
-    const { data } = yield call(getRepositoriesHandle, user)
-    yield put(setRepositories(data))
+    if (pesquisa === "language") {
+      const { data } = yield call(getLanguageRepositoriesHandle, user);
+      yield put(setRepositories(data.items));
+    } else {
+      const { data } = yield call(getUserRepositoriesHandle, user);
+      yield put(setRepositories(data));
+    }
   } catch (error) {
-    alert('User not found')
+    if (pesquisa === "language") alert("Language not found");
+    else alert("User not found");
   }
 }
 
-export const setRepositories = (repositories) => ({
+export const setRepositories = repositories => ({
   type: Types.SET_REPOS,
   repositories
-})
+});

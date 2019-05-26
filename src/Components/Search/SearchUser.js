@@ -9,7 +9,6 @@ const SearchUser = props => {
   useEffect(() => {
     dispatch(searchUsers(searchString))
   }, [searchString, dispatch])
-
   const handleSelect = user => {
     setSearchString("")
     dispatch(setUser(user))
@@ -17,7 +16,7 @@ const SearchUser = props => {
 
   const handleKeyPress = e => {
     if (e.keyCode === 13) {
-      dispatch(searchRepos(searchString))
+      dispatch(searchRepos(searchString, 'user'))
       setSearchString("")
     }
   }

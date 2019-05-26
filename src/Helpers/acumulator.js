@@ -7,6 +7,7 @@ export const acumulateByYear = (array, prop) => {
       ...acumulator,
       [internalAcumulator]: acumulator[internalAcumulator] ? [...acumulator[internalAcumulator], item] : [item]
     }
+    return null
   })
 
   return acumulator
