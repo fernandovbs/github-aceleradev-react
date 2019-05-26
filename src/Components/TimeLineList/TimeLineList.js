@@ -10,18 +10,17 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
   } else if (repositories.loaded) {
     return (
       <VerticalTimeline>
-        {repositories.repositories.map(repo => {
-          //console.log(repo.git_commits_url)
-          return (
-            <TimeLineListItem
-              description={repo.description}
-              language={repo.language}
-              repoName={repo.name}
-              key={repo.id}
-              date={repo.created_at}
-            />
-          )
-        })}
+        {Object.keys(repositoriesByYear)
+          .slice(0)
+          .reverse()
+          .map(year => (
+            <React.Fragment>
+              <TimeLineListItem
+                year={`Repositórios criados em: ${year}`}
+                repositories={repositoriesByYear[year]}
+              />
+            </React.Fragment>
+          ))}
       </VerticalTimeline>
     )
   }
@@ -34,12 +33,12 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
 }
 
 function mapStateToProps({ repositories }) {
-  console.log(acumulateByYear(repositories.repositories, "created_at"))
+  let repos = repositories.repositories.filter(
+    repo => !repo.private && !repo.archived && !repo.forked
+  )
   return {
-    repositoriesByYear: acumulateByYear(
-      repositories.repositories,
-      "created_at"
-    ),
+    repositoriesByYear: acumulateByYear(repos, "created_at"),
+
     repositories: {
       ...repositories,
       repositories: repositories.repositories
