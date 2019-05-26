@@ -13,8 +13,8 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
         {Object.keys(repositoriesByYear)
           .slice(0)
           .reverse()
-          .map(year => (
-            <React.Fragment>
+          .map((year, index) => (
+            <React.Fragment key={index}>
               <TimeLineListItem
                 year={`Repositórios criados em: ${year}`}
                 repositories={repositoriesByYear[year]}
@@ -33,9 +33,9 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
 }
 
 function mapStateToProps({ repositories }) {
-  let repos = repositories.repositories.filter(
-    repo => !repo.private && !repo.archived && !repo.forked
-  )
+  let repos = repositories.repositories
+    .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))
+    .filter(repo => !repo.private && !repo.archived && !repo.forked)
   return {
     repositoriesByYear: acumulateByYear(repos, "created_at"),
 

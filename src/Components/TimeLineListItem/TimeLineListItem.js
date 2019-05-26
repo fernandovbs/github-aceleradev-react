@@ -7,7 +7,7 @@ const TimeLineListItem = ({ year, repositories, ...props }) => {
     <VerticalTimelineElement
       className="vertical-timeline-element--education"
       date={year}
-      icon={repositories.length}
+      icon={<React.Fragment>{repositories.length}</React.Fragment>}
       iconStyle={{
         fontSize: "28px",
         background: "black",
@@ -15,8 +15,8 @@ const TimeLineListItem = ({ year, repositories, ...props }) => {
         marginTop: "20px"
       }}
     >
-      {repositories.map(repo => (
-        <React.Fragment>
+      {repositories.map((repo, index) => (
+        <React.Fragment key={index}>
           <h2 className="vertical-timeline-element-title">{repo.name}</h2>
           <h3 className="vertical-timeline-element-subtitle">
             {repo.description}

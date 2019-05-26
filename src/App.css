@@ -41,3 +41,8 @@
   font-size: 24px !important;
   color: black !important;
 }
+
+.css-z3ro6d[data-isselectable="true"]:hover,
+[data-css-z3ro6d][data-isselectable="true"]:hover {
+  background-color: #cecece;
+}
