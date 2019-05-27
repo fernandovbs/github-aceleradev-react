@@ -13,13 +13,24 @@ const params = {
     searchString: 'fernando',
 }
 
-const it = sagaHelper(getUsers(axiosMock, params))
+it('should call axios.request with appropriate parameters for users search', () => {
+    getUsersHandle(params.searchString, axiosMock)
+    expect(axiosMock.request).toHaveBeenCalledTimes(1);
+    
+    expect(axiosMock.request.mock.calls[0][0]).toMatchObject({
+        method: "get",
+        url: `http://api.github.com/search/users?q=${params.searchString}`
+      })    
+});
+
+
+const itUser = sagaHelper(getUsers(axiosMock, params))
   
-it('should call getUsersHandle', result => {
+itUser('should call getUsersHandle', result => {
     expect(result).toEqual(call(getUsersHandle, params.searchString, axiosMock))
     return {items: initialState.users.suggestions}
 })
 
-it('should put setUsers', result => {
+itUser('should put setUsers', result => {
     expect(result).toEqual(put(setUsers(initialState.users.suggestions.slice(0,5))))
 })
