@@ -10,7 +10,7 @@ import {
 import { initialState, axiosMock } from '../Helpers/testUtils'
 
 const params = {
-    searchString: 'fernando',
+    searchString: 'someone',
 }
 
 it('should call axios.request with appropriate parameters for users search', () => {

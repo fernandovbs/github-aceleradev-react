@@ -16,7 +16,7 @@ afterEach(() => {
 });
 
 const userParams = {
-    user: 'fernando',
+    user: 'someone',
     pesquisa: 'user'
 }
 
