@@ -4,7 +4,7 @@ import { Types } from "../reducers/repositories";
 export const getUserRepositoriesHandle = async (user, axios) => {
   return axios.request({
     method: "get",
-    url: `${URI.user(user)}/repos`
+    url: `${URI.user(user)}/repos?per_page=100`
   });
 };
 export const getLanguageRepositoriesHandle = async (user, axios) => {
