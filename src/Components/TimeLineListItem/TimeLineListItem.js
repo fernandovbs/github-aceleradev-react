@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
+const randomColor = require("randomcolor");
+
 const TimeLineListItem = ({ year, repositories }) => {
   const [show, setShow] = useState(true);
+  const [color, setColor] = useState("");
   const handleClick = e => setShow(!show);
+
+  useEffect(() => {
+    setColor(
+      randomColor({
+        luminosity: "dark",
+        format: "rgba",
+        alpha: 0.5
+      })
+    );
+  }, []);
   return (
     <React.Fragment>
       {show && (
@@ -15,7 +28,7 @@ const TimeLineListItem = ({ year, repositories }) => {
           icon={<React.Fragment>{repositories.length}</React.Fragment>}
           iconStyle={{
             fontSize: "28px",
-            background: "black",
+            background: `${color}`,
             color: "rgb(255, 255, 255)",
             marginTop: "20px"
           }}
@@ -40,7 +53,7 @@ const TimeLineListItem = ({ year, repositories }) => {
             icon={<React.Fragment>{repositories.length}</React.Fragment>}
             iconStyle={{
               fontSize: "28px",
-              background: "black",
+              background: `${color}`,
               color: "rgb(255, 255, 255)",
               marginTop: "20px"
             }}

@@ -18,15 +18,16 @@ export function* getRepositories(axios, { user, pesquisa }) {
   try {
     if (pesquisa === "language") {
       const { data } = yield call(getLanguageRepositoriesHandle, user, axios);
-      yield put(setRepositories(data.items));
+      if (data.items.length !== 0) {
+        yield put(setRepositories(data.items));
+      } else alert("Repo/ Language not found");
     } else {
       const { data } = yield call(getUserRepositoriesHandle, user, axios);
       yield put(setRepositories(data));
     }
   } catch (error) {
-    console.log(error)
-    if (pesquisa === "language") alert("Language not found");
-    else alert("User not found");
+    console.log(error);
+    alert("User not found");
   }
 }
 
