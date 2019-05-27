@@ -29,7 +29,8 @@ const TimeLineListItem = ({ year, repositories }) => {
             background: `${color}`,
             color: "rgb(255, 255, 255)",
             marginTop: "20px",
-            cursor: 'pointer'
+            cursor: 'pointer',
+            paddingTop: '8px'
           }}
         >
           {show ? repositories.map((repo, index) => (
