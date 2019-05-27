@@ -31,3 +31,18 @@
     transform: rotate(360deg);
   }
 }
+
+.vertical-timeline--two-columns .vertical-timeline-element-icon {
+  height: 44px !important;
+}
+
+.vertical-timeline-element-date {
+  text-align: center !important;
+  font-size: 24px !important;
+  color: black !important;
+}
+
+.css-z3ro6d[data-isselectable="true"]:hover,
+[data-css-z3ro6d][data-isselectable="true"]:hover {
+  background-color: #cecece;
+}

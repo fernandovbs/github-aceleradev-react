@@ -5,22 +5,27 @@ import { searchRepos } from "./redux/reducers/repositories";
 import NavBar from "./Components/NavBar/NavBar";
 import TimeLineList from "./Components/TimeLineList/TimeLineList";
 const HomeScreen = ({ ...props }) => {
-  const { dispatch, user } = props
+  const { dispatch, user, repositories } = props
 
   useEffect(() => {
-    user && user.login && dispatch(searchRepos(user.login));
+    user && user.login && dispatch(searchRepos(user.login, 'user'));
   }, [dispatch, user]);
   return (
-    <div className="App">
+    <div className="App" data-testid="home-screen">
       <NavBar />
-      <TimeLineList />
+      {repositories.loaded && (
+        <TimeLineList />
+      )}
+
     </div>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = ({
+  users, repositories
+}) => {
   return {
-    ...state,
-   user: state.users.user
+    repositories,
+    user: users.user
   };
 };
 

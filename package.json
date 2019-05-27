@@ -5,6 +5,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "evergreen-ui": "^4.15.0",
+    "jest-dom": "^3.4.0",
+    "moment": "^2.24.0",
+    "randomcolor": "^0.5.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -33,5 +36,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-testing-library": "^7.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga-testing": "^1.0.5"
   }
 }
