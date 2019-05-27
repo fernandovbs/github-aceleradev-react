@@ -1,13 +1,13 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { render } from 'react-testing-library'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { render } from 'react-testing-library';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import reducers from '../redux/reducers'
-import sagas from '../redux/sagas'
-import logger from 'redux-logger'
+import reducers from '../redux/reducers';
+import sagas from '../redux/sagas';
+import logger from 'redux-logger';
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 export function renderWithRedux(
     ui,
@@ -24,7 +24,7 @@ export function renderWithRedux(
   }
 
 export const axiosMock = {
-  request: jest.fn(() => Promise.resolve({ data: {} })) 
+  request: jest.fn(() => Promise.resolve({ data: {} }))
 }
 
 
