@@ -20,7 +20,6 @@ const TimeLineListItem = ({ year, repositories }) => {
   }, []);
   return (
     <React.Fragment>
-      {show && (
         <VerticalTimelineElement
           className="vertical-timeline-element--education"
           iconOnClick={handleClick}
@@ -30,10 +29,11 @@ const TimeLineListItem = ({ year, repositories }) => {
             fontSize: "28px",
             background: `${color}`,
             color: "rgb(255, 255, 255)",
-            marginTop: "20px"
+            marginTop: "20px",
+            cursor: 'pointer'
           }}
         >
-          {repositories.map((repo, index) => (
+          {show ? repositories.map((repo, index) => (
             <div key={index}>
               <h2 className="vertical-timeline-element-title">{repo.name}</h2>
               <h3 className="vertical-timeline-element-subtitle">
@@ -41,26 +41,9 @@ const TimeLineListItem = ({ year, repositories }) => {
               </h3>
               <hr />
             </div>
-          ))}
+          ))
+          : <br />}
         </VerticalTimelineElement>
-      )}
-      {!show && (
-        <React.Fragment>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date={year}
-            iconOnClick={handleClick}
-            icon={<React.Fragment>{repositories.length}</React.Fragment>}
-            iconStyle={{
-              fontSize: "28px",
-              background: `${color}`,
-              color: "rgb(255, 255, 255)",
-              marginTop: "20px"
-            }}
-          />
-          <br />
-        </React.Fragment>
-      )}
     </React.Fragment>
   );
 };
