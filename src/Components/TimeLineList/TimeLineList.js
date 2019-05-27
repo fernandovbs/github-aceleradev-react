@@ -10,7 +10,8 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
   } else if (repositories.loaded) {
     return (
       <VerticalTimeline>
-        {Object.keys(repositoriesByYear)
+       <div data-testid="timeline">
+       {Object.keys(repositoriesByYear)
           .slice(0)
           .reverse()
           .map((year, index) => (
@@ -21,6 +22,7 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
               />
             </div>
           ))}
+        </div>
       </VerticalTimeline>
     )
   }

@@ -1,9 +1,8 @@
-import axios from 'axios'
 import { call, put } from 'redux-saga/effects';
 import { URI } from '../../uri';
 import { Types } from '../reducers/users'
 
-const getUsersHandle = async (searchString) => {
+export const getUsersHandle = async (searchString, axios) => {
   return searchString.length > 3 &&
   axios.request({
         method: 'get',
@@ -11,9 +10,9 @@ const getUsersHandle = async (searchString) => {
     }).then(res => res.data)
 }
 
-export function* getUsers({ searchString }) {
+export function* getUsers(axios, { searchString }) {
   try {
-    const { items } = yield call(getUsersHandle, searchString)
+    const { items } = yield call(getUsersHandle, searchString, axios)
     
     yield put(setUsers(items ? items.slice(0,5) : []))
   } catch (error) {
