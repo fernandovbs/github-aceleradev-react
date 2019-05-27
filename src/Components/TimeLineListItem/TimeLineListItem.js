@@ -16,7 +16,7 @@ const TimeLineListItem = ({ year, repositories, ...props }) => {
       }}
     >
       {repositories.map((repo, index) => (
-        <div key={index}>
+        <div key={index} data-testid="timeline-item">
           <h2 className="vertical-timeline-element-title">{repo.name}</h2>
           <h3 className="vertical-timeline-element-subtitle">
             {repo.description}

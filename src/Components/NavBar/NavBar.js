@@ -9,7 +9,7 @@ const Nav = () => {
     setSelection(e.target.value)
   }
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center" }} data-testid="navbar">
       {selection === "UserSearch" ? <SearchUser /> : <SearchLanguage />}
       <Select
         value={selection}
