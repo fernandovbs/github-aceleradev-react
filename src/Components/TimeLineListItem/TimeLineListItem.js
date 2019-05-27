@@ -8,7 +8,6 @@ const TimeLineListItem = ({ year, repositories }) => {
   const [show, setShow] = useState(true);
   const [color, setColor] = useState("");
   const handleClick = e => setShow(!show);
-
   useEffect(() => {
     setColor(
       randomColor({
@@ -35,7 +34,7 @@ const TimeLineListItem = ({ year, repositories }) => {
         >
           {show ? repositories.map((repo, index) => (
             <div key={index}>
-              <h2 className="vertical-timeline-element-title">{repo.name}</h2>
+              <h2 className="vertical-timeline-element-title"><a href={repo.html_url} target="_blank">{repo.name}</a></h2>
               <h3 className="vertical-timeline-element-subtitle">
                 {repo.description}
               </h3>
