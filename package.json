@@ -41,5 +41,14 @@
     "react-testing-library": "^7.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga-testing": "^1.0.5"
-  }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/helpers/",
+      "!<rootDir>/src/index.js",
+      "!<rootDir>/src/serviceWorker.js"
+    ]
+  }  
 }

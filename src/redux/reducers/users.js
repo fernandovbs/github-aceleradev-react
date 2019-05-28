@@ -10,7 +10,7 @@ export const Types = {
     user: {},
   }
 
-  export default function repositories(state = defaultState, action) {
+  export default function users(state = defaultState, action) {
     switch (action.type) {
       case Types.SET_USER:
         return {
