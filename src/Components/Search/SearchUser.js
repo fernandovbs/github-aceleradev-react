@@ -42,7 +42,7 @@ const SearchUser = props => {
         placeholder="Digite o nome do usuário..."
         marginTop={20}
         autoFocus
-        height={40}
+        height={50}
         width={500}
         value={searchString}
       />
@@ -57,7 +57,9 @@ const SearchUser = props => {
               onSelect={() => handleSelect(user)}
               intent="none"
             >
-              <Table.TextCell>{user.login}</Table.TextCell>
+              <Table.TextCell>
+                <span style={{ fontSize: "15px" }}>{user.login}</span>
+              </Table.TextCell>
             </Table.Row>
           )
         })}

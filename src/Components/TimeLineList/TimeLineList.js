@@ -10,27 +10,23 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
   } else if (repositories.loaded) {
     return (
       <VerticalTimeline>
-       <div data-testid="timeline">
-       {Object.keys(repositoriesByYear)
-          .slice(0)
-          .reverse()
-          .map((year, index) => (
+        <div data-testid="timeline">
+          {Object.keys(repositoriesByYear)
+            .slice(0)
+            .reverse()
+            .map((year, index) => (
               <TimeLineListItem
                 year={`Repositórios criados em: ${year}`}
                 repositories={repositoriesByYear[year]}
                 key={index}
               />
-          ))}
+            ))}
         </div>
       </VerticalTimeline>
     )
   }
 
-  return (
-    <Heading size={900} marginTop="default">
-      GitHub Timeline
-    </Heading>
-  )
+  return <Heading size={900} marginTop="default" />
 }
 
 function mapStateToProps({ repositories }) {
