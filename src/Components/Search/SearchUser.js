@@ -45,6 +45,7 @@ const SearchUser = props => {
         height={50}
         width={500}
         value={searchString}
+        data-testid="search-input"
       />
       <Pane width={500} style={paneStyle}>
         {props.users.suggestions.map((user, index) => {
@@ -56,6 +57,7 @@ const SearchUser = props => {
               isSelectable
               onSelect={() => handleSelect(user)}
               intent="none"
+              data-testid="users-list"
             >
               <Table.TextCell>
                 <span style={{ fontSize: "15px" }}>{user.login}</span>
