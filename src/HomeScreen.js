@@ -13,9 +13,7 @@ const HomeScreen = ({ ...props }) => {
   return (
     <div className="App" data-testid="home-screen">
       <NavBar />
-      {repositories.loaded && (
-        <TimeLineList />
-      )}
+      <TimeLineList />
 
     </div>
   );
