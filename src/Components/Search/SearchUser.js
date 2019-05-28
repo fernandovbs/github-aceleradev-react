@@ -16,11 +16,22 @@ const SearchUser = props => {
 
   const handleKeyPress = e => {
     if (e.keyCode === 13) {
-      dispatch(searchRepos(searchString, 'user'))
+      dispatch(searchRepos(searchString, "user"))
       setSearchString("")
+    } else if (e.keyCode === 40) {
+      document && document.getElementById("userDiv").focus()
     }
   }
+  let paneStyle = {
+    position: "absolute",
+    zIndex: 999,
+    backgroundColor: "white",
+    borderTop: "none"
+  }
 
+  if (props.users.suggestions.length > 0) {
+    paneStyle = { ...paneStyle, border: "1px solid" }
+  }
   return (
     <div>
       <SearchInput
@@ -30,22 +41,18 @@ const SearchUser = props => {
         onKeyDown={handleKeyPress}
         placeholder="Digite o nome do usuário..."
         marginTop={20}
+        autoFocus
         height={40}
         width={500}
-        autoFocus
         value={searchString}
       />
-      <Pane
-        width={500}
-        style={{
-          position: "absolute",
-          zIndex: 999
-        }}
-      >
-        {props.users.suggestions.map(user => {
+      <Pane width={500} style={paneStyle}>
+        {props.users.suggestions.map((user, index) => {
           return (
             <Table.Row
               key={user.id}
+              id="userDiv"
+              tabIndex="0"
               isSelectable
               onSelect={() => handleSelect(user)}
               intent="none"
