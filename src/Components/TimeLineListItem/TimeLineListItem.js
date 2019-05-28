@@ -35,7 +35,7 @@ const TimeLineListItem = ({ year, repositories }) => {
         >
           {show ? repositories.map((repo, index) => (
             <div key={index}>
-              <h2 className="vertical-timeline-element-title"><a href={repo.html_url} target="_blank" style={{color: 'darkblue', opacity: '0.86'}}>{repo.name}</a></h2>
+              <h2 className="vertical-timeline-element-title"><a href={repo.html_url} target="_blank" style={{color: 'darkblue', opacity: '0.86', textDecoration: 'none'}}>{repo.name}</a></h2>
               <h3 className="vertical-timeline-element-subtitle" style={{opacity: '0.86'}}>
                 {repo.description}
               </h3>
