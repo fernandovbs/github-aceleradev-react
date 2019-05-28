@@ -1,15 +1,15 @@
 export const Types = {
-  GET_REPOS: 'repos/GET_REPOS',
-  SET_REPOS: 'repos/SET_REPOS',
-  RESET_REPOS: 'repos/RESET_REPOS'
-}
+  GET_REPOS: "repos/GET_REPOS",
+  SET_REPOS: "repos/SET_REPOS",
+  RESET_REPOS: "repos/RESET_REPOS"
+};
 
 const initialState = {
   repositories: [],
   loaded: false,
   loading: false,
-  pesquisa: 'user'
-}
+  pesquisa: "user"
+};
 
 export default function repositories(state = initialState, action) {
   switch (action.type) {
@@ -18,19 +18,19 @@ export default function repositories(state = initialState, action) {
         ...state,
         repositories: [],
         loaded: false,
-        loading: true,
-      }
+        loading: true
+      };
     case Types.SET_REPOS:
       return {
         ...state,
         repositories: action.repositories,
         loaded: true,
-        loading: false,
-      }
+        loading: false
+      };
     case Types.RESET_REPOS:
-      return state
+      return state;
     default:
-      return state
+      return state;
   }
 }
 
@@ -39,5 +39,5 @@ export const searchRepos = (user, pesquisa) => {
     type: Types.GET_REPOS,
     user,
     pesquisa
-  }
-}
+  };
+};

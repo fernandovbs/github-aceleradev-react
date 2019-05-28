@@ -1,36 +1,36 @@
-import { SearchInput } from "evergreen-ui"
-import React, { useState } from "react"
-import { connect } from "react-redux"
-import { searchRepos } from "../../redux/reducers/repositories"
+import { SearchInput } from "evergreen-ui";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { searchRepos } from "../../redux/reducers/repositories";
 const SearchUser = props => {
-  const [repoString, setRepoString] = useState("")
-  const [languageString, setLanguageString] = useState("")
-  const { dispatch } = props
+  const [repoString, setRepoString] = useState("");
+  const [languageString, setLanguageString] = useState("");
+  const { dispatch } = props;
 
   const handleKeyPressRepo = e => {
     if (e.keyCode === 13) {
-      dispatch(searchRepos({ repoString, languageString }, "language"))
-      setRepoString("")
-      setLanguageString("")
+      dispatch(searchRepos({ repoString, languageString }, "language"));
+      setRepoString("");
+      setLanguageString("");
     }
-  }
+  };
   const handleKeyPressLanguage = e => {
     if (e.keyCode === 13) {
       if (repoString === "") {
-        alert("Preencha o nome do repositório!")
+        alert("Preencha o nome do repositório!");
       } else {
-        dispatch(searchRepos({ repoString, languageString }, "language"))
-        setLanguageString("")
-        setRepoString("")
+        dispatch(searchRepos({ repoString, languageString }, "language"));
+        setLanguageString("");
+        setRepoString("");
       }
     }
-  }
+  };
 
   return (
     <div>
       <SearchInput
         onChange={e => {
-          setRepoString(e.target.value)
+          setRepoString(e.target.value);
         }}
         onKeyDown={handleKeyPressRepo}
         placeholder="Digite o nome do repositório..."
@@ -42,10 +42,10 @@ const SearchUser = props => {
       />
       <SearchInput
         onChange={e => {
-          setLanguageString(e.target.value)
+          setLanguageString(e.target.value);
         }}
         onKeyDown={handleKeyPressLanguage}
-        placeholder="Linguagem"
+        placeholder="Linguagem..."
         marginTop={20}
         marginLeft={5}
         height={50}
@@ -54,16 +54,16 @@ const SearchUser = props => {
         value={languageString}
       />
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
   return {
     ...state
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   null
-)(SearchUser)
+)(SearchUser);
