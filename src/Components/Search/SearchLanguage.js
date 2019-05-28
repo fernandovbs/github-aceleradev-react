@@ -50,7 +50,6 @@ const SearchLanguage = props => {
         marginLeft={5}
         height={50}
         width={180}
-        autoFocus
         value={languageString}
       />
     </div>
