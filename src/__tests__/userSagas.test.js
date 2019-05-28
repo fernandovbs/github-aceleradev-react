@@ -19,7 +19,7 @@ it('should call axios.request with appropriate parameters for users search', () 
     
     expect(axiosMock.request.mock.calls[0][0]).toMatchObject({
         method: "get",
-        url: `http://api.github.com/search/users?q=${params.searchString}`
+        url: `https://api.github.com/search/users?q=${params.searchString}`
       });
 });
 
