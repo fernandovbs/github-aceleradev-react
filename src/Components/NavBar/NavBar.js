@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import SearchLanguage from "../Search/SearchLanguage"
 import SearchUser from "../Search/SearchUser"
 
-const Nav = () => {
+const Nav = props => {
   const [selection, setSelection] = useState("UserSearch")
   const [searched, setSearch] = useState("")
   const handleSelection = e => {
@@ -13,11 +13,10 @@ const Nav = () => {
   useEffect(() => {
     setSearch("test")
   }, [])
-
   return (
     <div
       style={
-        searched !== ""
+        props.repositories.loaded || props.repositories.loading
           ? {
               display: "flex",
               justifyContent: "center",
