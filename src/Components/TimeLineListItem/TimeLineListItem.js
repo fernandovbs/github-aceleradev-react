@@ -52,7 +52,9 @@ const TimeLineListItem = ({ year, repositories }) => {
               className="vertical-timeline-element-subtitle"
               style={{ opacity: "0.86" }}
             >
-              {repo.description}
+              {repo.description !== null
+                ? repo.description
+                : <strike>"without description"</strike>}
             </h3>
             <hr />
           </div>
