@@ -33,7 +33,7 @@ it('should call axios.request with appropriate parameters for user repositories 
     expect(axiosMock.request).toHaveBeenCalledTimes(1);
     expect(axiosMock.request.mock.calls[0][0]).toMatchObject({
         method: "get",
-        url: `http://api.github.com/users/${userParams.user}/repos`
+        url: `https://api.github.com/users/${userParams.user}/repos?per_page=100`
       });
 });
 
