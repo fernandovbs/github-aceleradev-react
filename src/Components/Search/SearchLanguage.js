@@ -2,7 +2,7 @@ import { SearchInput } from "evergreen-ui";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { searchRepos } from "../../redux/reducers/repositories";
-const SearchUser = props => {
+const SearchLanguage = props => {
   const [repoString, setRepoString] = useState("");
   const [languageString, setLanguageString] = useState("");
   const { dispatch } = props;
@@ -66,4 +66,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(SearchUser);
+)(SearchLanguage);
