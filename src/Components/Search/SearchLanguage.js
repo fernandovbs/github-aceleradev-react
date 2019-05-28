@@ -17,7 +17,7 @@ const SearchUser = props => {
   const handleKeyPressLanguage = e => {
     if (e.keyCode === 13) {
       if (repoString === "") {
-        alert("Must fill repositorie name")
+        alert("Preencha o nome do repositório!")
       } else {
         dispatch(searchRepos({ repoString, languageString }, "language"))
         setLanguageString("")

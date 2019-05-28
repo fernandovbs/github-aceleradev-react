@@ -6,7 +6,7 @@ import { acumulateByYear } from "../../Helpers/acumulator"
 import TimeLineListItem from "../TimeLineListItem/TimeLineListItem"
 const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
   if (repositories.loading) {
-    return <Spinner margin="auto" marginTop={10} />
+    return <Spinner margin="auto" marginTop={50} />
   } else if (repositories.loaded) {
     return (
       <VerticalTimeline>
