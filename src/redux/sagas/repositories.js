@@ -26,7 +26,6 @@ export function* getRepositories(axios, { user, pesquisa }) {
       yield put(setRepositories(data));
     }
   } catch (error) {
-    console.log(error);
     alert("User not found");
   }
 }

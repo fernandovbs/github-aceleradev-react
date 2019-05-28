@@ -1,8 +1,8 @@
 import React from 'react'
-import repositories, { Types } from '../redux/reducers/repositories'
+import repositories, { Types, searchRepos } from '../redux/reducers/repositories'
 import { initialState } from '../Helpers/testUtils'
 
-describe('Repositories reducer', () => {
+describe('Test repositories reducer', () => {
     const initiaStorelState = {
         repositories: [],
         loaded: false,
@@ -10,10 +10,28 @@ describe('Repositories reducer', () => {
         pesquisa: 'user'            
     }
 
+    it('Should export the correct types', () => {
+        expect(Types).toEqual(
+            {
+                GET_REPOS: 'repos/GET_REPOS',
+                SET_REPOS: 'repos/SET_REPOS',
+                RESET_REPOS: 'repos/RESET_REPOS'
+            }            
+        )
+    });
+
     it('should return the initial state', () => {
         expect(repositories(undefined, {})).toEqual(initiaStorelState);
     });
 
+    it('should dispatch GET_REPOS', () => {
+        expect(searchRepos('somebody', 'user')).toEqual({
+            type: Types.GET_REPOS,
+            user: 'somebody',
+            pesquisa: 'user'    
+        })
+    });
+    
     it('should handle GET_REPOS with user pesquisa', () => {
         expect(repositories({}, {
                 type: Types.GET_REPOS,
@@ -65,4 +83,4 @@ describe('Repositories reducer', () => {
             loading: false,
         });
     });
-})
+});
