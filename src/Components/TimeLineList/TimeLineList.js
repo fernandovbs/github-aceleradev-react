@@ -15,12 +15,11 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
           .slice(0)
           .reverse()
           .map((year, index) => (
-            <div key={index}>
               <TimeLineListItem
                 year={`Repositórios criados em: ${year}`}
                 repositories={repositoriesByYear[year]}
+                key={index}
               />
-            </div>
           ))}
         </div>
       </VerticalTimeline>
