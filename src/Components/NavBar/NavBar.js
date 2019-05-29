@@ -20,7 +20,7 @@ const Nav = props => {
           : {
               display: "flex",
               justifyContent: "center",
-              marginTop: "300px",
+              marginTop: "225px",
               transition: "all 700ms"
             }
       }

@@ -13,7 +13,7 @@ const HomeScreen = ({ ...props }) => {
   }, [dispatch, user]);
   return (
     <div className="App" data-testid="home-screen">
-      <img src={GitHub} alt="GitHub Search" title="GitHub Search" style={{ marginTop: "2rem"}} />
+      <img src={GitHub} alt="GitHub Search" title="GitHub Search" style={{ marginTop: "1rem"}} />
 
       <NavBar repositories={repositories} />
       <TimeLineList />
