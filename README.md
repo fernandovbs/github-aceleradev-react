@@ -22,4 +22,15 @@ In this project we created a timeline to show some github users repositories
 
 - You are able to search a repositorie name from github and get it displayed on the screen in descending created order as well and in a specific programming language if you want.
 
+##Informations
+This app was created by:
+- Carlos Berti
+- Fernando Souza
+- Vinicius Zomer
 
+Collaborators:
+- Lucas Geovani
+- Rafael Caferati
+
+You can access our app in the link bellow:
+    [https://cleancodersgithub.netlify.com/]
