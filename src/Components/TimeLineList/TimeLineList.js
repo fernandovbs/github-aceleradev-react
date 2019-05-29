@@ -4,12 +4,18 @@ import { connect } from "react-redux"
 import { VerticalTimeline } from "react-vertical-timeline-component"
 import { acumulateByYear } from "../../Helpers/acumulator"
 import TimeLineListItem from "../TimeLineListItem/TimeLineListItem"
-const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
+import User from "./../User/User"
+
+const TimeLineList = ({ repositories, repositoriesByYear, user, ...props }) => {
   if (repositories.loading) {
     return <Spinner margin="auto" marginTop={50} />
   } else if (repositories.loaded) {
     return (
       <React.Fragment>
+        
+        {user && 
+        <User user={user} />}
+
         <h2 style={{ marginTop: "2rem", fontWeight: "normal" }}>
           {repositories.repositories.length} repositórios agrupados por ano de
           criação
@@ -35,7 +41,7 @@ const TimeLineList = ({ repositories, repositoriesByYear, ...props }) => {
   return <Heading size={900} marginTop="default" />
 }
 
-function mapStateToProps({ repositories }) {
+function mapStateToProps({ repositories, users }) {
   let repos = repositories.repositories
     .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))
     .filter(repo => !repo.private && !repo.archived && !repo.forked)
@@ -47,7 +53,8 @@ function mapStateToProps({ repositories }) {
       repositories: repositories.repositories
         .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))
         .filter(repo => !repo.private && !repo.archived && !repo.forked)
-    }
+    },
+    user: users.user
   }
 }
 
