@@ -1,13 +1,13 @@
-import { Select } from "evergreen-ui";
-import React, { useState } from "react";
-import SearchLanguage from "../Search/SearchLanguage";
-import SearchUser from "../Search/SearchUser";
+import { Select } from "evergreen-ui"
+import React, { useState } from "react"
+import SearchLanguage from "../Search/SearchLanguage"
+import SearchUser from "../Search/SearchUser"
 
 const Nav = props => {
-  const [selection, setSelection] = useState("UserSearch");
+  const [selection, setSelection] = useState("UserSearch")
   const handleSelection = e => {
-    setSelection(e.target.value);
-  };
+    setSelection(e.target.value)
+  }
   return (
     <div
       style={
@@ -26,7 +26,11 @@ const Nav = props => {
       }
       data-testid="navbar"
     >
-      {selection === "UserSearch" ? <SearchUser /> : <SearchLanguage />}
+      {selection === "UserSearch" ? (
+        <SearchUser repositories={props.repositories} />
+      ) : (
+        <SearchLanguage />
+      )}
       <Select
         value={selection}
         height={50}
@@ -41,7 +45,7 @@ const Nav = props => {
         </option>
       </Select>
     </div>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav
