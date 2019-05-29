@@ -23,6 +23,10 @@
   color: #61dafb;
 }
 
+.vertical-timeline-element-content {
+  box-shadow: none !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,12 +37,19 @@
 }
 
 .vertical-timeline--two-columns .vertical-timeline-element-icon {
-  height: 44px !important;
+  height: 48px !important;
+  box-shadow: none !important;
+  margin-top: 18px !important;
+}
+
+.vertical-timeline.vertical-timeline--two-columns {
+  margin-top: 0 !important;
 }
 
 .vertical-timeline-element-date {
   text-align: center !important;
   font-size: 24px !important;
+  top: 8.5px !important;
   color: black !important;
   opacity: 0.86 !important;
 }

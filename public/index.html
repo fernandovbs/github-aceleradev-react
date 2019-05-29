@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script>
+      window.addEventListener("keydown", function(event) {
+          // arrow key
+          if ([37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+              event.preventDefault();
+          }
+      });
+  </script>
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />

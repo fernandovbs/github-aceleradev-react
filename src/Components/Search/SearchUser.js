@@ -10,16 +10,16 @@ const SearchUser = props => {
     dispatch(searchUsers(searchString))
   }, [searchString, dispatch])
   const handleSelect = user => {
-    setSearchString("")
     dispatch(setUser(user))
+    setSearchString(user.login)
   }
 
   const handleKeyPress = e => {
     if (e.keyCode === 13) {
       dispatch(searchRepos(searchString, "user"))
-      setSearchString("")
     } else if (e.keyCode === 40) {
-      document && document.getElementById("userDiv").focus()
+      document.getElementById("userDiv") &&
+        document.getElementById("userDiv").focus()
     }
   }
   let paneStyle = {
@@ -41,6 +41,7 @@ const SearchUser = props => {
         onKeyDown={handleKeyPress}
         placeholder="Digite o nome do usuário..."
         marginTop={20}
+        id="searchInput"
         autoFocus
         height={50}
         width={500}

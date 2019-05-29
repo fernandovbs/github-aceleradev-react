@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { VerticalTimelineElement } from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
+import React, { useEffect, useState } from "react"
+import { VerticalTimelineElement } from "react-vertical-timeline-component"
+import "react-vertical-timeline-component/style.min.css"
 
-const randomColor = require("randomcolor");
+const randomColor = require("randomcolor")
 
 const TimeLineListItem = ({ year, repositories }) => {
-  const [show, setShow] = useState(true);
-  const [color, setColor] = useState("");
-  const handleClick = () => setShow(!show);
+  const [show, setShow] = useState(true)
+  const [color, setColor] = useState("")
+  const handleClick = () => setShow(!show)
   useEffect(() => {
     setColor(
       randomColor({
@@ -15,8 +15,8 @@ const TimeLineListItem = ({ year, repositories }) => {
         format: "rgba",
         alpha: 0.5
       })
-    );
-  }, []);
+    )
+  }, [])
   return (
     <VerticalTimelineElement
       className="vertical-timeline-element--education"
@@ -24,12 +24,11 @@ const TimeLineListItem = ({ year, repositories }) => {
       date={year}
       icon={<React.Fragment>{repositories.length}</React.Fragment>}
       iconStyle={{
-        fontSize: "28px",
+        fontSize: "26px",
         background: `${color}`,
         color: "rgb(255, 255, 255)",
-        marginTop: "20px",
         cursor: "pointer",
-        paddingTop: "8px"
+        paddingTop: "7px"
       }}
     >
       {show ? (
@@ -42,20 +41,28 @@ const TimeLineListItem = ({ year, repositories }) => {
                 style={{
                   color: "darkblue",
                   opacity: "0.86",
-                  textDecoration: "none"
+                  textDecoration: "none",
+                  marginTop: "10px"
                 }}
               >
                 {repo.name}
               </a>
             </h2>
-            <h3
+            <h4
               className="vertical-timeline-element-subtitle"
-              style={{ opacity: "0.86" }}
+              style={{
+                opacity: "0.86",
+                fontWeight: "normal",
+                lineHeight: "1.5",
+                marginBottom: "5px"
+              }}
             >
-              {repo.description !== null
-                ? repo.description
-                : <strike>"without description"</strike>}
-            </h3>
+              {repo.description !== null ? (
+                repo.description
+              ) : (
+                <strike>"without description"</strike>
+              )}
+            </h4>
             <hr />
           </div>
         ))
@@ -63,7 +70,7 @@ const TimeLineListItem = ({ year, repositories }) => {
         <br />
       )}
     </VerticalTimelineElement>
-  );
-};
+  )
+}
 
-export default TimeLineListItem;
+export default TimeLineListItem
