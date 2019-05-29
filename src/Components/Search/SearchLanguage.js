@@ -31,7 +31,7 @@ const SearchLanguage = props => {
   }
 
   return (
-    <div>
+    <div style={{textAlign: 'initial'}}>
       <SearchInput
         onChange={e => {
           setRepoString(e.target.value)
