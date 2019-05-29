@@ -11,7 +11,6 @@ const SearchUser = props => {
   }, [searchString, dispatch])
   const handleSelect = user => {
     dispatch(setUser(user))
-    setSearchString(user.login)
   }
 
   const handleKeyPress = e => {
