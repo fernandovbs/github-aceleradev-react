@@ -22,6 +22,7 @@ const SearchUser = props => {
   const handleKeyPress = e => {
     if (e.keyCode === 13) {
       dispatch(searchRepos(searchString, "user"))
+      dispatch(searchUsers(""))
     } else if (e.keyCode === 40) {
       document.getElementById("userDiv") &&
         document.getElementById("userDiv").focus()
