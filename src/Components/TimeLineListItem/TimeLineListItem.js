@@ -33,7 +33,7 @@ const TimeLineListItem = ({ year, repositories }) => {
     >
       {show ? (
         repositories.map((repo, index) => (
-          <div key={index}>
+          <div key={index} data-testid="timeline-item">
             <h2 className="vertical-timeline-element-title">
               <a
                 href={repo.html_url}

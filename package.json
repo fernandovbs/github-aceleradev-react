@@ -50,5 +50,5 @@
       "!<rootDir>/src/index.js",
       "!<rootDir>/src/serviceWorker.js"
     ]
-  }  
+  }
 }
