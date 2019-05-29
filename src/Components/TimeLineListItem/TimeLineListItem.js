@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { VerticalTimelineElement } from "react-vertical-timeline-component"
-import "react-vertical-timeline-component/style.min.css"
+import React, { useEffect, useState } from "react";
+import { VerticalTimelineElement } from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
-const randomColor = require("randomcolor")
+const randomColor = require("randomcolor");
 
 const TimeLineListItem = ({ year, repositories }) => {
-  const [show, setShow] = useState(true)
-  const [color, setColor] = useState("")
-  const handleClick = () => setShow(!show)
+  const [show, setShow] = useState(true);
+  const [color, setColor] = useState("");
+  const handleClick = () => setShow(!show);
   useEffect(() => {
     setColor(
       randomColor({
@@ -15,24 +15,25 @@ const TimeLineListItem = ({ year, repositories }) => {
         format: "rgba",
         alpha: 0.5
       })
-    )
-  }, [])
+    );
+  }, []);
   return (
-    <VerticalTimelineElement
-      className="vertical-timeline-element--education"
-      iconOnClick={handleClick}
-      date={year}
-      icon={<React.Fragment>{repositories.length}</React.Fragment>}
-      iconStyle={{
-        fontSize: "26px",
-        background: `${color}`,
-        color: "rgb(255, 255, 255)",
-        cursor: "pointer",
-        paddingTop: "7px"
-      }}
-    >
-      {show ? (
-        repositories.map((repo, index) => (
+    <React.Fragment>
+      {show?
+      <VerticalTimelineElement
+        className="vertical-timeline-element--education"
+        iconOnClick={handleClick}
+        date={year}
+        icon={<React.Fragment>{repositories.length}</React.Fragment>}
+        iconStyle={{
+          fontSize: "26px",
+          background: `${color}`,
+          color: "rgb(255, 255, 255)",
+          cursor: "pointer",
+          paddingTop: "7px"
+        }}
+      >
+        {repositories.map((repo, index) => (
           <div key={index} data-testid="timeline-item">
             <h2 className="vertical-timeline-element-title">
               <a
@@ -65,12 +66,22 @@ const TimeLineListItem = ({ year, repositories }) => {
             </h4>
             <hr />
           </div>
-        ))
-      ) : (
-        <br />
-      )}
-    </VerticalTimelineElement>
-  )
-}
+        ))}
+      </VerticalTimelineElement> : <VerticalTimelineElement
+        className="vertical-timeline-element--education"
+        iconOnClick={handleClick}
+        date={year}
+        icon={<React.Fragment>{repositories.length}</React.Fragment>}
+        iconStyle={{
+          fontSize: "26px",
+          background: `lightgray`,
+          color: "rgb(255, 255, 255)",
+          cursor: "pointer",
+          paddingTop: "7px"
+        }}
+      ></VerticalTimelineElement>}
+    </React.Fragment>
+  );
+};
 
-export default TimeLineListItem
+export default TimeLineListItem;

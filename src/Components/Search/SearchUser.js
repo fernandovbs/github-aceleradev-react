@@ -46,6 +46,7 @@ const SearchUser = props => {
         marginTop={20}
         id="searchInput"
         autoFocus
+        autoComplete='off'
         height={50}
         width={500}
         value={searchString}
