@@ -39,6 +39,7 @@ const SearchLanguage = props => {
         onKeyDown={handleKeyPressRepo}
         placeholder="Digite o nome do repositório..."
         marginTop={20}
+        data-testid="repository-input"
         height={50}
         width={500}
         autoFocus
@@ -50,6 +51,7 @@ const SearchLanguage = props => {
         }}
         onKeyDown={handleKeyPressLanguage}
         placeholder="Linguagem..."
+        data-testid="language-input"
         marginTop={20}
         marginLeft={16}
         height={50}
@@ -58,6 +60,7 @@ const SearchLanguage = props => {
       />
       <Button
         marginLeft={16}
+        data-testid="search-repo-input"
         height={52}
         marginBottom={3}
         iconBefore="search"
