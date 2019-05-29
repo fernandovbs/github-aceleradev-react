@@ -1,16 +1,22 @@
 import { Pane, SearchInput, Table } from "evergreen-ui"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
 import { searchRepos } from "../../redux/reducers/repositories"
 import { searchUsers, setUser } from "../../redux/reducers/users"
 const SearchUser = props => {
   const [searchString, setSearchString] = useState("")
   const { dispatch } = props
-  useEffect(() => {
-    dispatch(searchUsers(searchString))
-  }, [searchString, dispatch])
   const handleSelect = user => {
     dispatch(setUser(user))
+    setSearchString(user.login)
+  }
+
+  const handleSearchChange = e => {
+    const inputValue = e.target.value
+    setSearchString(inputValue)
+    setTimeout(() => {
+      dispatch(searchUsers(inputValue))
+    }, 300)
   }
 
   const handleKeyPress = e => {
@@ -34,9 +40,7 @@ const SearchUser = props => {
   return (
     <div>
       <SearchInput
-        onChange={e => {
-          setSearchString(e.target.value)
-        }}
+        onChange={e => handleSearchChange(e)}
         onKeyDown={handleKeyPress}
         placeholder="Digite o nome do usuário..."
         marginTop={20}
