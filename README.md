@@ -2,6 +2,10 @@
 
 In the project directory, you can run:
 
+### `npm/yarn install`
+
+Install all the dependencies to be able to run the app
+
 ### `npm/yarn start`
 
 Runs the app in the development mode.<br>
@@ -23,12 +27,12 @@ In this project we created a timeline to show some github users repositories
 - You are able to search a repositorie name from github and get it displayed on the screen in descending created order as well and in a specific programming language if you want.
 
 ## Informations
-This app was created by:
+CleanCoders team:
 - Carlos Berti
 - Fernando Souza
 - Vinicius Zomer
 
-Collaborators:
+Special thanks:
 - Lucas Geovani
 - Rafael Caferati
 
