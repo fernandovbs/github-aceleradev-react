@@ -83,7 +83,7 @@ export const initialState = {
         forked: false,
         private: false,
         name: "aaa",
-        description: "aasdasdasdasdasdasd"
+        description: null
       },
       {
         created_at: "2012-01-01T00:31:50Z",
