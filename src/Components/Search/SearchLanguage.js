@@ -45,6 +45,7 @@ const SearchLanguage = props => {
         autoFocus
         value={repoString}
       />
+      <br />
       <SearchInput
         onChange={e => {
           setLanguageString(e.target.value)
@@ -53,7 +54,6 @@ const SearchLanguage = props => {
         placeholder="Linguagem..."
         data-testid="language-input"
         marginTop={20}
-        marginLeft={16}
         height={50}
         width={180}
         value={languageString}

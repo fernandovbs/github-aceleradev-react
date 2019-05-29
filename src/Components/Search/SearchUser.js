@@ -12,17 +12,15 @@ const SearchUser = props => {
   };
 
   const handleSearchChange = e => {
-    const search = e.target.value
-    setSearchString(search)
-    dispatch(searchUsers(search));
+    setSearchString(e.target.value);
+    dispatch(searchUsers(searchString));
   };
   const handleKeyPress = e => {
     if (searchString !== "") {
       if (e.keyCode === 13) {
         dispatch(searchRepos(searchString, "user"));
         setSearchString("");
-        setTimeout(() => {dispatch(searchUsers('')) }, 100)
-        
+        dispatch(searchUsers(''));
       } else if (e.keyCode === 40) {
         document.getElementById("userDiv") &&
           document.getElementById("userDiv").focus();
@@ -45,7 +43,6 @@ const SearchUser = props => {
         onChange={e => handleSearchChange(e)}
         onKeyDown={handleKeyPress}
         placeholder="Digite o nome do usuário..."
-        autoComplete= 'off'
         marginTop={20}
         id="searchInput"
         autoFocus
