@@ -24,11 +24,12 @@ export default function repositories(state = initialState, action) {
       return {
         ...state,
         repositories: action.repositories,
+        user: action.user,
         loaded: true,
         loading: false
       };
     case Types.RESET_REPOS:
-      return state;
+      return { ...state, loading: false };
     default:
       return state;
   }

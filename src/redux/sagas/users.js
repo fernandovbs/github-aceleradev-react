@@ -17,7 +17,6 @@ export const getUsersHandle = async (searchString, axios) => {
 export function* getUsers(axios, { searchString }) {
   try {
     const { items } = yield call(getUsersHandle, searchString, axios);
-
     yield put(setUsers(items ? items.slice(0, 5) : []));
   } catch (error) {
     console.log(error);

@@ -54,7 +54,7 @@ function mapStateToProps({ repositories, users }) {
         .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))
         .filter(repo => !repo.private && !repo.archived && !repo.forked)
     },
-    user: users.user
+    user: users.user && repositories.user
   }
 }
 

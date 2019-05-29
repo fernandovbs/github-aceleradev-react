@@ -1,42 +1,40 @@
-import { Pane, SearchInput, Table } from "evergreen-ui"
-import React, { useState } from "react"
-import { connect } from "react-redux"
-import { searchRepos } from "../../redux/reducers/repositories"
-import { searchUsers, setUser } from "../../redux/reducers/users"
+import { Pane, SearchInput, Table } from "evergreen-ui";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { searchRepos } from "../../redux/reducers/repositories";
+import { searchUsers, setUser } from "../../redux/reducers/users";
 const SearchUser = props => {
-  const [searchString, setSearchString] = useState("")
-  const { dispatch } = props
+  const [searchString, setSearchString] = useState("");
+  const { dispatch } = props;
   const handleSelect = user => {
-    dispatch(setUser(user))
-    setSearchString(user.login)
-  }
+    setSearchString("");
+    dispatch(setUser(user));
+  };
 
   const handleSearchChange = e => {
-    const inputValue = e.target.value
-    setSearchString(inputValue)
-    setTimeout(() => {
-      dispatch(searchUsers(inputValue))
-    }, 300)
-  }
-
+    setSearchString(e.target.value);
+    dispatch(searchUsers(searchString));
+  };
   const handleKeyPress = e => {
-    if (e.keyCode === 13) {
-      dispatch(searchRepos(searchString, "user"))
-      dispatch(searchUsers(""))
-    } else if (e.keyCode === 40) {
-      document.getElementById("userDiv") &&
-        document.getElementById("userDiv").focus()
+    if (searchString !== "") {
+      if (e.keyCode === 13) {
+        dispatch(searchRepos(searchString, "user"));
+        setSearchString("");
+      } else if (e.keyCode === 40) {
+        document.getElementById("userDiv") &&
+          document.getElementById("userDiv").focus();
+      }
     }
-  }
+  };
   let paneStyle = {
     position: "absolute",
     zIndex: 999,
     backgroundColor: "white",
     borderTop: "none"
-  }
+  };
 
   if (props.users.suggestions.length > 0) {
-    paneStyle = { ...paneStyle, border: "1px solid" }
+    paneStyle = { ...paneStyle, border: "1px solid" };
   }
   return (
     <div>
@@ -68,20 +66,20 @@ const SearchUser = props => {
                 <span style={{ fontSize: "15px" }}>{user.login}</span>
               </Table.TextCell>
             </Table.Row>
-          )
+          );
         })}
       </Pane>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
   return {
     ...state
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   null
-)(SearchUser)
+)(SearchUser);
