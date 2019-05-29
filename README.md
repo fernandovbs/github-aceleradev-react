@@ -32,5 +32,5 @@ Collaborators:
 - Lucas Geovani
 - Rafael Caferati
 
-You can access our app in the link bellow:
-    [https://cleancodersgithub.netlify.com/]
+You can access our app in this link:
+    https://cleancodersgithub.netlify.com/
