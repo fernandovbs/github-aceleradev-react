@@ -20,7 +20,7 @@ Launches the test runner in the interactive watch mode.<br>
 
 ## Description
 
-In this project we created a timeline to show some github users repositories
+In this project we have created a timeline to show some github users repositories
 
 - You are able to search a username from github and get its repositories, from github api, displayed in descending created order on the screen
 
