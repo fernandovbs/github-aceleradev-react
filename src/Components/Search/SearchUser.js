@@ -1,41 +1,41 @@
-import { Pane, SearchInput, Table } from "evergreen-ui";
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { searchRepos } from "../../redux/reducers/repositories";
-import { searchUsers, setUser } from "../../redux/reducers/users";
+import { Pane, SearchInput, Table } from "evergreen-ui"
+import React, { useState } from "react"
+import { connect } from "react-redux"
+import { searchRepos } from "../../redux/reducers/repositories"
+import { searchUsers, setUser } from "../../redux/reducers/users"
 const SearchUser = props => {
-  const [searchString, setSearchString] = useState("");
-  const { dispatch } = props;
+  const [searchString, setSearchString] = useState("")
+  const { dispatch } = props
   const handleSelect = user => {
-    setSearchString("");
-    dispatch(setUser(user));
-  };
+    setSearchString("")
+    dispatch(setUser(user))
+  }
 
   const handleSearchChange = e => {
-    setSearchString(e.target.value);
-    dispatch(searchUsers(searchString));
-  };
+    setSearchString(e.target.value)
+    dispatch(searchUsers(searchString))
+  }
   const handleKeyPress = e => {
     if (searchString !== "") {
       if (e.keyCode === 13) {
-        dispatch(searchRepos(searchString, "user"));
-        setSearchString("");
-        dispatch(searchUsers(''));
+        dispatch(searchRepos(searchString, "user"))
+        setSearchString("")
+        dispatch(searchUsers(""))
       } else if (e.keyCode === 40) {
         document.getElementById("userDiv") &&
-          document.getElementById("userDiv").focus();
+          document.getElementById("userDiv").focus()
       }
     }
-  };
+  }
   let paneStyle = {
     position: "absolute",
     zIndex: 999,
     backgroundColor: "white",
     borderTop: "none"
-  };
+  }
 
   if (props.users.suggestions.length > 0) {
-    paneStyle = { ...paneStyle, border: "1px solid" };
+    paneStyle = { ...paneStyle, border: "1px solid" }
   }
   return (
     <div>
@@ -46,7 +46,7 @@ const SearchUser = props => {
         marginTop={20}
         id="searchInput"
         autoFocus
-        autoComplete='off'
+        autoComplete="off"
         height={50}
         width={500}
         value={searchString}
@@ -68,20 +68,20 @@ const SearchUser = props => {
                 <span style={{ fontSize: "15px" }}>{user.login}</span>
               </Table.TextCell>
             </Table.Row>
-          );
+          )
         })}
       </Pane>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     ...state
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
   null
-)(SearchUser);
+)(SearchUser)

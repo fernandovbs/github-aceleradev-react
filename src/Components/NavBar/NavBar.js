@@ -27,7 +27,7 @@ const Nav = props => {
       }
       data-testid="navbar"
     >
-      <img src={GitHub} alt="GitHub Search" title="GitHub Search" style={{ position: 'absolute', left: '6%', width: 80, marginTop: 5}} />
+     <img src={GitHub} alt="GitHub Search" title="GitHub Search" style={{ position: 'relative', right: '2%', width: 80, height: 80, marginTop: 5}} />
       {selection === "UserSearch" ? (
         <SearchUser repositories={props.repositories} />
       ) : (
