@@ -18,6 +18,9 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br>
 
+### `yarn test --coverage --watchAll=false`
+Run test coverage reports
+
 ## Description
 
 In this project we have created a timeline to show some github users repositories
